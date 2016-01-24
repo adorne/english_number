@@ -20,16 +20,16 @@ def englishNumber number
                'sixteen', 'seventeen', 'eighteen', 'nineteen']
 
   #  "left" - сколько от числа нам ещё осталось вывести.
-  #  "write"  - часть числа, которую мы выводим сейчас.
+  #  "write" - часть числа, которую мы выводим сейчас.
   #  write и left... поняли?  :)
   left  = number
-  write = left/100          #  Сколько сотен осталось вывести?
-  left  = left - write*100  #  Вычтем эти сотни.
+  write = left/1000          #  Сколько тысяч осталось вывести?
+  left  = left - write*1000  #  Вычтем эти тысячи.
 
   if write > 0
     #  Вот здесь действительно хитрый фокус:
-    hundreds  = englishNumber write
-    numString = numString + hundreds + ' hundred'
+    thousands  = englishNumber write
+    numString = numString + thousands + ' thousand'
     #  Это называется "рекурсия".  Так что же я только что сделал?
     #  Я велел этому методу вызвать себя, но с параметром "write" вместо
     #  "number".  Помните, что "write" это (в настоящий момент) число
@@ -43,6 +43,18 @@ def englishNumber number
 
     if left > 0
       #  Так, мы не выводим 'two hundredfifty-one'...
+      numString = numString + ' '
+    end
+  end
+
+  left  = number
+  write = left/100          #  Сколько сотен осталось вывести?
+  left  = left - write*100  #  Вычтем эти сотни.
+
+  if write > 0
+    numString = numString + onesPlace[write-1].to_s + 'hundred'
+
+    if left > 0
       numString = numString + ' '
     end
   end
@@ -82,3 +94,5 @@ def englishNumber number
   #  А теперь мы просто возвращаем "numString"...
   numString
 end
+
+puts englishNumber(11222949)
