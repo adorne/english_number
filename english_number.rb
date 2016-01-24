@@ -28,7 +28,7 @@ def englishNumber number
 
   if write > 0
     #  Вот здесь действительно хитрый фокус:
-    thousands  = englishNumber write
+    thousands = englishNumber write
     numString = numString + thousands + ' thousand'
     #  Это называется "рекурсия".  Так что же я только что сделал?
     #  Я велел этому методу вызвать себя, но с параметром "write" вместо
@@ -95,4 +95,4 @@ def englishNumber number
   numString
 end
 
-puts englishNumber(11222949)
+puts englishNumber 1000000
