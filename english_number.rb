@@ -104,4 +104,11 @@ def englishNumber number
   numString
 end
 
-puts englishNumber 109
+def puts_english_number
+  puts "Please enter a number:"
+  ask = gets.chomp.to_i
+
+  puts "It's " + englishNumber(ask) + "."
+end
+
+puts_english_number
