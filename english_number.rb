@@ -47,16 +47,25 @@ def englishNumber number
     end
   end
 
-  left  = number
   write = left/100          #  Сколько сотен осталось вывести?
   left  = left - write*100  #  Вычтем эти сотни.
 
   if write > 0
-    numString = numString + onesPlace[write-1].to_s + 'hundred'
+    numString = numString + onesPlace[write-1].to_s + ' hundred'
 
     if left > 0
+      #  Так, мы не выводим 'two hundredfifty-one'...
       numString = numString + ' '
     end
+
+  #elsif write == 1
+  #  numString = numString + ' hundred'
+#
+  #  if left > 0
+  #    #  Так, мы не выводим 'two hundredfifty-one'...
+#      numString = numString + ' '
+  #  end
+
   end
 
   write = left/10          #  Сколько десятков осталось вывести?
@@ -95,4 +104,4 @@ def englishNumber number
   numString
 end
 
-puts englishNumber 1000000
+puts englishNumber 109
